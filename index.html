@@ -32,61 +32,39 @@
         to { transform: translateX(-100%); }
       }
     }
-
-    /* Custom Transitions & Utilities */
-    .reveal-init {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .revealed {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-
-    .navbar-scrolled {
-      @apply py-3 bg-primary/95 backdrop-blur-md shadow-lg border-accent/20;
-      top: 1rem !important;
-      left: 1rem !important;
-      right: 1rem !important;
-      width: calc(100% - 2rem) !important;
-      max-width: 80rem !important;
-      margin: 0 auto !important;
-      border-radius: 1rem !important;
-    }
-
-    .navbar-hidden {
-      transform: translateY(-120%);
-    }
-
-    #mobile-menu.open {
-      @apply flex;
-    }
   </style>
 </head>
 
 <body class="bg-background text-text-primary font-['DM_Sans'] antialiased">
   <!-- Navbar -->
   <nav id="navbar"
-    class="fixed top-0 left-0 right-0 z-50 w-full border-b border-transparent bg-primary transition-all duration-500">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-8 transition-all duration-500">
+    class="navbar fixed top-0 left-0 right-0 z-50 w-full border-b border-transparent bg-primary transition-all duration-500">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 md:px-8 transition-all duration-500">
       <a href="#hero"
-        class="cursor-pointer font-['Playfair_Display'] text-xl font-bold text-accent transition-all duration-300 hover:text-text-inverse sm:text-2xl">
+        class="cursor-pointer font-['Playfair_Display'] text-2xl font-bold text-accent transition-all duration-300 hover:text-text-inverse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
         Singgah Coffee & Book
       </a>
       <ul class="hidden items-center gap-8 md:flex">
-        <li><a href="#menu" class="nav-link cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent">Menu</a></li>
-        <li><a href="#about" class="nav-link cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent">About</a></li>
-        <li><a href="#gallery" class="nav-link cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent">Gallery</a></li>
-        <li><a href="#location" class="nav-link cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent">Location</a></li>
+        <li><a href="#menu"
+            class="cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Menu</a>
+        </li>
+        <li><a href="#about"
+            class="cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">About</a>
+        </li>
+        <li><a href="#gallery"
+            class="cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Gallery</a>
+        </li>
+        <li><a href="#location"
+            class="cursor-pointer text-sm font-medium text-text-inverse transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Location</a>
+        </li>
       </ul>
       <div class="flex items-center gap-3">
         <a href="https://wa.me/6285158083700"
-          class="hidden min-h-12 cursor-pointer items-center rounded-full bg-accent px-8 py-3 text-sm font-bold text-primary transition-all duration-300 hover:bg-[#e7bd71] md:inline-flex">
+          class="hidden min-h-12 cursor-pointer items-center rounded-full bg-accent px-8 py-3 text-sm font-bold text-primary transition-all duration-300 hover:bg-[#e7bd71] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:inline-flex">
           Contact Us
         </a>
         <button id="mobile-menu-button"
-          class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl border border-accent/60 p-3 text-accent transition-all duration-300 hover:bg-accent/15 md:hidden"
+          class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-xl border border-accent/60 p-3 text-accent transition-all duration-300 hover:bg-accent/15 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:hidden"
           aria-label="Open menu" aria-expanded="false">
           <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
@@ -95,31 +73,6 @@
       </div>
     </div>
   </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="fixed inset-0 z-[100] hidden overflow-hidden">
-    <div class="absolute inset-0 bg-primary/40 backdrop-blur-sm opacity-0 transition-opacity duration-300" data-overlay></div>
-    <div class="absolute top-0 right-0 h-full w-4/5 max-w-sm translate-x-full bg-background p-8 shadow-2xl transition-transform duration-300" data-panel>
-      <div class="flex items-center justify-between mb-12">
-        <span class="font-['Playfair_Display'] text-xl font-bold text-primary">Singgah</span>
-        <button class="p-2 text-primary hover:text-accent transition-colors" data-close aria-label="Close menu">
-          <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <nav class="flex flex-col gap-6">
-        <a href="#menu" class="text-2xl font-['Playfair_Display'] font-bold text-primary hover:text-accent transition-colors">Menu</a>
-        <a href="#about" class="text-2xl font-['Playfair_Display'] font-bold text-primary hover:text-accent transition-colors">About</a>
-        <a href="#gallery" class="text-2xl font-['Playfair_Display'] font-bold text-primary hover:text-accent transition-colors">Gallery</a>
-        <a href="#location" class="text-2xl font-['Playfair_Display'] font-bold text-primary hover:text-accent transition-colors">Location</a>
-      </nav>
-      <div class="mt-auto pt-12 border-t border-primary/10">
-        <p class="text-sm text-text-secondary mb-4">Jl. Riyanto No.29, Sumampir</p>
-        <a href="https://wa.me/6285158083700" class="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-4 text-sm font-bold text-text-inverse transition-colors hover:bg-secondary">
-          Chat via WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>
 
   <main>
     <!-- Hero Section -->
@@ -131,24 +84,24 @@
           <div class="relative z-10 lg:col-span-5 lg:pr-8">
             <div class="mb-8 inline-flex items-center gap-4">
               <span class="h-px w-10 bg-accent"></span>
-              <span class="text-[11px] font-bold uppercase tracking-[0.25em] text-secondary sm:text-[13px]">Est. 2017 · Purwokerto Utara</span>
+              <span class="text-[13px] font-bold uppercase tracking-[0.25em] text-secondary">Est. 2017 · Purwokerto Utara</span>
             </div>
             
-            <h1 class="font-['Playfair_Display'] text-4xl font-bold leading-[1.1] text-primary sm:text-5xl md:text-6xl lg:text-7xl xl:text-[5.5rem]">
+            <h1 class="font-['Playfair_Display'] text-5xl font-bold leading-[1.1] text-primary md:text-[5.5rem]">
               Your Corner for <br />
               <span class="italic text-secondary">Coffee &amp; Stories</span>
             </h1>
             
-            <p class="mt-8 max-w-lg text-base leading-[1.8] text-text-secondary md:text-lg">
+            <p class="mt-8 max-w-lg text-lg leading-[1.8] text-text-secondary">
               A sanctuary where great coffee meets great books. Study, read, and recharge in the heart of Purwokerto.
             </p>
             
             <div class="mt-12 flex flex-col gap-5 sm:flex-row sm:items-center">
-              <a href="#menu" class="group relative inline-flex h-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-8 font-bold text-text-inverse transition-all duration-300">
+              <a href="#menu" class="group relative inline-flex h-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-8 font-bold text-text-inverse transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
                 <span class="relative z-10 transition-colors duration-300 group-hover:text-primary">Explore Our Menu</span>
                 <div class="absolute inset-0 z-0 h-full w-full translate-y-full bg-accent transition-transform duration-300 ease-in-out group-hover:translate-y-0"></div>
               </a>
-              <a href="#about" class="inline-flex h-14 cursor-pointer items-center justify-center gap-3 rounded-full border border-secondary/30 px-8 font-bold text-primary transition-all duration-300 hover:bg-secondary/5">
+              <a href="#about" class="inline-flex h-14 cursor-pointer items-center justify-center gap-3 rounded-full border border-secondary/30 px-8 font-bold text-primary transition-all duration-300 hover:bg-secondary/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">
                 Our Story
               </a>
             </div>
@@ -163,20 +116,20 @@
                 <div class="absolute inset-0 animate-float rounded-b-3xl rounded-t-[300px] ring-1 ring-inset ring-black/10"></div>
               </div>
               
-              <!-- Floating Overlaid Image (Hidden on small mobile) -->
-              <div class="absolute -bottom-8 -left-8 hidden aspect-square w-48 animate-float overflow-hidden rounded-full border-8 border-background shadow-2xl sm:block md:w-64 md:-bottom-12 md:left-4" style="animation-delay: -3s;">
+              <!-- Floating Overlaid Image -->
+              <div class="absolute -bottom-8 -left-8 hidden aspect-square w-64 animate-float overflow-hidden rounded-full border-8 border-background shadow-2xl sm:block md:-bottom-12 md:left-4" style="animation-delay: -3s;">
                 <img src="img/Other/3.jpeg" alt="Coffee beans" class="h-full w-full object-cover">
               </div>
               
               <!-- Floating Badge -->
-              <div class="absolute right-0 top-1/4 -mt-10 animate-float rounded-2xl border border-secondary/20 bg-surface/90 p-4 shadow-xl backdrop-blur-md sm:-right-8 sm:mt-0 md:top-1/3">
+              <div class="absolute right-0 top-1/4 -mt-10 animate-[float-shake_5s_ease-in-out_infinite] rounded-2xl border border-secondary/20 bg-surface/90 p-4 shadow-xl backdrop-blur-md sm:-right-8 sm:mt-0 md:top-1/3">
                 <div class="flex items-center gap-4">
-                  <div class="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-primary sm:h-12 sm:w-12">
-                    <svg viewBox="0 0 24 24" fill="none" class="h-5 w-5 sm:h-6 sm:w-6"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-primary">
+                    <svg viewBox="0 0 24 24" fill="none" class="h-6 w-6"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
                   <div>
-                    <p class="font-['Playfair_Display'] text-lg font-bold text-primary sm:text-xl">4.6★</p>
-                    <p class="text-[10px] font-medium text-text-secondary sm:text-[12px]">450+ Reviews</p>
+                    <p class="font-['Playfair_Display'] text-xl font-bold text-primary">4.6★</p>
+                    <p class="text-[12px] font-medium text-text-secondary">450+ Reviews</p>
                   </div>
                 </div>
               </div>
@@ -188,239 +141,1112 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-background py-16 md:py-24">
-      <div class="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:items-center md:px-8">
+    <section id="about" class="bg-background py-14 md:py-20">
+      <div class="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-2 md:items-center md:gap-14 md:px-8">
         <div class="order-2 md:order-1">
           <p class="text-[13px] font-medium uppercase tracking-[0.2em] text-secondary">Tentang Kami</p>
-          <h2 class="mt-4 text-balance font-['Playfair_Display'] text-3xl font-bold leading-tight text-primary md:text-5xl">
+          <h2
+            class="mt-4 text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-primary md:text-[40px]">
             More than a café. It's where you belong.</h2>
-          <p class="mt-6 text-base leading-[1.8] text-text-secondary">Singgah Coffee &amp; Book was born from a simple
+          <p class="mt-5 text-balance text-base leading-[1.7] text-text-secondary">Singgah Coffee &amp; Book was born from a simple
             belief — that the best ideas happen when you slow down. Nestled in Sumampir, Purwokerto Utara, we built a
             space where coffee and books live side by side.</p>
+          <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Whether you're deep in a deadline,
+            lost in a novel, or simply looking for a quiet corner — Singgah is your place to land.</p>
           <div class="mt-8 h-px w-full bg-secondary/25"></div>
-          <div class="mt-8 grid grid-cols-2 gap-8 sm:grid-cols-3">
+          <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             <div>
-              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary" data-counter-target="40" data-counter-suffix="+">0</p>
+              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary"><span data-counter-target="40"
+                  data-counter-suffix="+">0</span></p>
               <p class="mt-1 text-[13px] text-text-secondary">Menu Items</p>
             </div>
             <div>
-              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary" data-counter-target="4.5" data-counter-decimals="1">0.0</p>
+              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary"><span data-counter-target="4.5"
+                  data-counter-decimals="1">0.0</span><span>★</span></p>
               <p class="mt-1 text-[13px] text-text-secondary">Google Rating</p>
             </div>
-            <div class="col-span-2 sm:col-span-1">
-              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary" data-counter-target="7" data-counter-suffix="yr">0</p>
+            <div>
+              <p class="font-['Playfair_Display'] text-3xl font-bold text-secondary"><span data-counter-target="7"
+                  data-counter-suffix="yr">0</span></p>
               <p class="mt-1 text-[13px] text-text-secondary">Of Service</p>
             </div>
           </div>
         </div>
         <div class="order-1 md:order-2">
-          <div class="aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl">
-            <img src="img/Other/2.jpeg" alt="Singgah Atmosphere" class="h-full w-full object-cover">
+          <div class="aspect-[4/5] overflow-hidden rounded-2xl">
+            <img src="img/Other/2.jpeg"
+              alt="Est. 2017 — Where coffee meets the love of reading" class="h-full w-full object-cover">
           </div>
         </div>
       </div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="bg-surface py-16 md:py-24">
+    <section id="menu" class="bg-surface py-14 md:py-20">
       <div class="mx-auto max-w-7xl px-6 md:px-8">
         <div class="mx-auto max-w-3xl text-center">
-          <h2 class="text-balance font-['Playfair_Display'] text-3xl font-bold text-primary md:text-5xl">What We're Brewing</h2>
-          <p class="mt-4 text-balance text-base text-text-secondary">Pilihan favorit pelanggan, dari kopi spesial hingga comfort food yang cocok menemani hari Anda.</p>
+          <h2
+            class="text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-primary md:text-[40px]">
+            What We're Brewing</h2>
+          <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Pilihan favorit pelanggan, dari kopi
+            spesial hingga comfort food yang cocok menemani hari Anda.</p>
         </div>
-        <div id="menu-filters" class="mt-12 flex flex-wrap items-center justify-center gap-3">
-          <button class="min-h-12 cursor-pointer rounded-full bg-primary px-6 py-3 text-[13px] font-bold text-text-inverse transition-all">All</button>
-          <button class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all">Coffee</button>
-          <button class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all">Non-Coffee</button>
-          <button class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all">Food</button>
+        <div id="menu-filters" class="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <button
+            class="min-h-12 cursor-pointer rounded-full bg-primary px-6 py-3 text-[13px] font-bold text-text-inverse transition-all duration-300 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">All</button>
+          <button
+            class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all duration-300 hover:border-secondary hover:bg-secondary hover:text-text-inverse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Coffee</button>
+          <button
+            class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all duration-300 hover:border-secondary hover:bg-secondary hover:text-text-inverse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Non-Coffee</button>
+          <button
+            class="min-h-12 cursor-pointer rounded-full border border-secondary/40 bg-background px-6 py-3 text-[13px] font-medium text-secondary transition-all duration-300 hover:border-secondary hover:bg-secondary hover:text-text-inverse focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Food</button>
         </div>
-        <div class="mt-16 grid grid-cols-1 gap-x-6 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Card Component (Sample) -->
+        <div class="mt-12 grid grid-cols-2 gap-x-6 gap-y-16 pt-8 lg:grid-cols-3">
+          
           <article data-category="food" class="group relative cursor-pointer">
-            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 hover:shadow-2xl">
-              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
-                <img src="img/F&B/Carbonara.png" alt="Spaghetti Carbonara" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Main Course</span>
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Carbonara.png" alt="Spaghetti Carbonara" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Main Course</span>
               </div>
               <div class="flex-grow">
-                <h3 class="font-['Playfair_Display'] text-2xl font-bold text-primary group-hover:text-accent transition-colors">Spaghetti Carbonara</h3>
-                <p class="mt-3 text-sm leading-relaxed text-text-secondary">Pasta dengan Saus Cream, Smoked Beef dan Keju.</p>
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">Spaghetti Carbonara</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">Pasta dengan Saus Cream, Smoked Beef dan Keju.</p>
               </div>
               <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
-                <p class="text-xl font-bold text-secondary">Rp 26.000</p>
+                <p class="text-lg font-bold text-secondary">Rp 26.000</p>
               </div>
             </div>
           </article>
-          <!-- ... (Rest of cards would follow same pattern) -->
+          
           <article data-category="food" class="group relative cursor-pointer">
-            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 hover:shadow-2xl">
-              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
-                <img src="img/F&B/Dori.png" alt="Dori Dabu - Dabu" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Rice Bowl</span>
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Dori.png" alt="Dori Dabu - Dabu" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Rice Bowl</span>
               </div>
               <div class="flex-grow">
-                <h3 class="font-['Playfair_Display'] text-2xl font-bold text-primary group-hover:text-accent transition-colors">Dori Dabu - Dabu</h3>
-                <p class="mt-3 text-sm leading-relaxed text-text-secondary">Ikan Dori tepung dengan topping Sambal Dabu - Dabu khas Sulawesi.</p>
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">Dori Dabu - Dabu</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">Ikan Dori tepung dengan topping Sambal Dabu - Dabu khas Sulawesi.</p>
               </div>
               <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
-                <p class="text-xl font-bold text-secondary">Rp 25.000</p>
+                <p class="text-lg font-bold text-secondary">Rp 25.000</p>
               </div>
             </div>
           </article>
+          
+          <article data-category="food" class="group relative cursor-pointer">
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Berry.png" alt="French Toast Sweet Berry" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Snack</span>
+              </div>
+              <div class="flex-grow">
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">French Toast Sweet Berry</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">Roti dengan seasoning dan topping Cream Blueberry.</p>
+              </div>
+              <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
+                <p class="text-lg font-bold text-secondary">Rp 23.000</p>
+              </div>
+            </div>
+          </article>
+          
+          <article data-category="food" class="group relative cursor-pointer">
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Churros.jpg" alt="Churros (Choco/Greentea)" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Snack</span>
+              </div>
+              <div class="flex-grow">
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">Churros (Choco/Greentea)</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">Adonan goreng dengan taburan Bubuk Gula Halus dan Bubuk Kayu Manis.</p>
+              </div>
+              <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
+                <p class="text-lg font-bold text-secondary">Rp 18.000</p>
+              </div>
+            </div>
+          </article>
+          
+          <article data-category="non-coffee" class="group relative cursor-pointer">
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Pauch.png" alt="Yellow Pauch" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Other Drink</span>
+              </div>
+              <div class="flex-grow">
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">Yellow Pauch</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">(Susu, Lemon, Vanilla)</p>
+              </div>
+              <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
+                <p class="text-lg font-bold text-secondary">Rp 25.000</p>
+              </div>
+            </div>
+          </article>
+          
           <article data-category="coffee" class="group relative cursor-pointer">
-            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 hover:shadow-2xl">
-              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg transition-transform duration-500 group-hover:-translate-y-2">
-                <img src="img/F&B/Kopiko.png" alt="Kopiko" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Signature Coffee</span>
+            <div class="relative flex h-full flex-col justify-between rounded-[2rem] border border-secondary/10 bg-white px-6 pb-8 pt-6 transition-all duration-500 group-hover:border-transparent group-hover:shadow-[0_20px_40px_-15px_rgba(44,24,16,0.15)]">
+              <div class="relative -mt-14 mb-6 aspect-[4/3] w-full overflow-hidden rounded-[1.5rem] shadow-md transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                <img src="img/F&B/Kopiko.png" alt="Kopiko" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <span class="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-primary backdrop-blur-md">Coffee</span>
               </div>
               <div class="flex-grow">
-                <h3 class="font-['Playfair_Display'] text-2xl font-bold text-primary group-hover:text-accent transition-colors">Kopiko</h3>
-                <p class="mt-3 text-sm leading-relaxed text-text-secondary">Espresso, Susu, dan Butter pilihan terbaik kami.</p>
+                <h3 class="font-['Playfair_Display'] text-[22px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-accent">Kopiko</h3>
+                <p class="mt-3 text-sm leading-[1.7] text-text-secondary">(Espresso, Susu, dan Butter)</p>
               </div>
               <div class="mt-6 flex items-center justify-between border-t border-secondary/10 pt-4">
-                <p class="text-xl font-bold text-secondary">Rp 28.000</p>
+                <p class="text-lg font-bold text-secondary">Rp 28.000</p>
               </div>
             </div>
           </article>
+          
         </div>
       </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="bg-primary py-16 md:py-24">
+    <section id="gallery" class="bg-primary py-14 md:py-20">
       <div class="mx-auto max-w-7xl px-6 md:px-8">
-        <div class="mx-auto max-w-3xl text-center mb-16">
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-text-inverse md:text-5xl">Suasana Singgah</h2>
-          <p class="mt-4 text-text-inverse/70">Sudut hangat, aroma kopi segar, dan momen terbaik pelanggan kami.</p>
+        <div class="mx-auto max-w-3xl text-center">
+          <h2
+            class="text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-text-inverse md:text-[40px]">
+            Suasana Singgah Coffee &amp; Book</h2>
+          <p class="mt-4 text-balance text-base leading-[1.7] text-text-inverse/80">Sudut hangat, aroma kopi segar, dan
+            momen terbaik pelanggan kami sepanjang hari.</p>
         </div>
-        <div id="gallery-grid" class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          <a href="#" class="group relative overflow-hidden rounded-2xl col-span-2 row-span-2">
-            <img src="img/gallery/singgahcoffeebookpwt2026_04_25_16_13_087244309a-8960-4270-8b06-5b1b20c27963.jpg" alt="Gallery 1" class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-auto">
-            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div id="gallery-grid" class="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
+          <!-- 1 (Hero Image) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-2 md:col-span-2 md:row-span-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_13_087244309a-8960-4270-8b06-5b1b20c27963.jpg" alt="Gallery image 1" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-[4/3] md:aspect-auto">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
           </a>
-          <a href="#" class="group relative overflow-hidden rounded-2xl">
-            <img src="img/gallery/singgahcoffeebookpwt2026_04_25_16_13_140b4342c5-ee87-4f78-9fcd-da0564d8378e.jpg" alt="Gallery 2" class="h-full w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110">
+          <!-- 2 -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_13_140b4342c5-ee87-4f78-9fcd-da0564d8378e.jpg" alt="Gallery image 2" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-auto">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
           </a>
-          <a href="#" class="group relative overflow-hidden rounded-2xl row-span-2">
-            <img src="img/gallery/singgahcoffeebookpwt2026_04_25_16_13_20e34b6702-bf88-48ce-a9ee-94f6654009eb.jpg" alt="Gallery 3" class="h-full w-full object-cover aspect-square md:aspect-auto transition-transform duration-700 group-hover:scale-110">
+          <!-- 3 (Tall) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-1 md:row-span-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_13_20e34b6702-bf88-48ce-a9ee-94f6654009eb.jpg" alt="Gallery image 3" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-auto">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
           </a>
-          <a href="#" class="group relative overflow-hidden rounded-2xl col-span-2 md:col-span-1">
-            <img src="img/gallery/singgahcoffeebookpwt2026_04_25_16_14_1708b1fffb-f61d-4def-b141-5715d176359c.jpg" alt="Gallery 4" class="h-full w-full object-cover aspect-video md:aspect-square transition-transform duration-700 group-hover:scale-110">
+          <!-- 4 (Wide on mobile) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-2 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_14_1708b1fffb-f61d-4def-b141-5715d176359c.jpg" alt="Gallery image 4" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-video md:aspect-square">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
           </a>
-          <a href="#" class="group relative overflow-hidden rounded-2xl">
-            <img src="img/gallery/singgahcoffeebookpwt2026_04_25_16_14_21b813b2e7-503a-438e-848e-e9a795f4dce7.jpg" alt="Gallery 5" class="h-full w-full object-cover aspect-square transition-transform duration-700 group-hover:scale-110">
+          <!-- 5 -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_14_21b813b2e7-503a-438e-848e-e9a795f4dce7.jpg" alt="Gallery image 5" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-[4/5]">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+          <!-- 6 (Wide on desktop) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_14_462500f3d3-b0d6-4448-bb80-1b3caf55aabd.jpg" alt="Gallery image 6" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-auto">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+          <!-- 7 (Wide on mobile) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-2 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_15_007e8c204c-4338-4596-bc9f-db021d76ca48.jpg" alt="Gallery image 7" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-video md:aspect-[4/5]">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+          <!-- 8 -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_15_138d5eefb2-ff12-4d9a-bb1f-586e7518191e.jpg" alt="Gallery image 8" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-video">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+          <!-- 9 -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-1 md:col-span-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_15_1920feb27f-37b0-492c-8e27-fe1bbcb1db55.jpg" alt="Gallery image 9" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-square md:aspect-video">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+          </a>
+          <!-- 10 (Wide) -->
+          <a href="#" class="group relative block overflow-hidden rounded-2xl col-span-2 md:col-span-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">
+            <img src="img/Gallery/singgahcoffeebookpwt2026_04_25_16_15_26117880d1-31f9-450a-81e2-857c9544aca6.jpg" alt="Gallery image 10" class="gallery-img h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-video md:aspect-auto">
+            <span class="absolute inset-0 flex items-center justify-center bg-black/0 transition-all duration-300 group-hover:bg-black/40">
+              <svg class="h-8 w-8 text-transparent transition-all duration-300 group-hover:text-white" viewBox="0 0 24 24" fill="none"><path d="M15 3H21V9M9 21H3V15M21 3L14 10M3 21L10 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
           </a>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-surface py-16 md:py-24 overflow-hidden">
+    <section id="testimonials" class="bg-surface py-14 md:py-20">
       <div class="mx-auto max-w-7xl px-6 md:px-8">
-        <div class="mx-auto max-w-3xl text-center mb-16">
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-primary md:text-5xl">What Our Customers Say</h2>
+        <div class="mx-auto max-w-3xl text-center">
+          <h2
+            class="text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-primary md:text-[40px]">
+            What Our Customers Say</h2>
+          <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Cerita nyata dari pelanggan setia
+            yang menjadikan Singgah Coffee &amp; Book bagian dari rutinitas mereka.</p>
         </div>
-        <div class="flex animate-marquee gap-6 whitespace-nowrap">
-          <!-- Item (Sample) -->
-          <article class="inline-block w-[320px] shrink-0 whitespace-normal rounded-3xl bg-white p-8 shadow-xl border border-primary/5">
-            <p class="font-['Playfair_Display'] text-4xl text-accent mb-4">“</p>
-            <p class="text-sm leading-relaxed text-text-secondary">Tempatnya sangat cozy untuk menikmati kopi sambil membaca. Sangat disyorkan!</p>
-            <div class="mt-8 flex items-center gap-4">
-              <img src="img/testimonials/fitri.png" alt="Fitri" class="h-12 w-12 rounded-full object-cover">
+        <div class="mt-12 flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)] group">
+          <!-- Marquee Content -->
+          <div class="flex w-max min-w-full shrink-0 animate-marquee items-stretch gap-6 pr-6 group-hover:[animation-play-state:paused]">
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
               <div>
-                <p class="font-bold text-primary">Fitri Khairunnisa</p>
-                <p class="text-xs text-text-secondary">Mahasiswi</p>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Tempatnya sangat cozy untuk menikmati kopi sambil membaca. Lokasinya strategis dan suasananya benar-benar membuat betah berlama-lama. Sangat disyorkan untuk pencinta kopi dan literasi!</p>
               </div>
-            </div>
-          </article>
-          <!-- Repeat same items for marquee... -->
-          <article class="inline-block w-[320px] shrink-0 whitespace-normal rounded-3xl bg-white p-8 shadow-xl border border-primary/5">
-            <p class="font-['Playfair_Display'] text-4xl text-accent mb-4">“</p>
-            <p class="text-sm leading-relaxed text-text-secondary">Suasana yang tenang dengan koleksi buku yang beragam. Pilihan terbaik di Purwokerto!</p>
-            <div class="mt-8 flex items-center gap-4">
-              <img src="img/testimonials/aditya.png" alt="Aditya" class="h-12 w-12 rounded-full object-cover">
               <div>
-                <p class="font-bold text-primary">Aditya Pratama</p>
-                <p class="text-xs text-text-secondary">Designer</p>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/fitri.png" alt="Foto Fitri Khairunnisa" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Fitri Khairunnisa</p>
+                    <p class="text-[13px] text-text-secondary">Mahasiswi </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </article>
-          <article class="inline-block w-[320px] shrink-0 whitespace-normal rounded-3xl bg-white p-8 shadow-xl border border-primary/5">
-            <p class="font-['Playfair_Display'] text-4xl text-accent mb-4">“</p>
-            <p class="text-sm leading-relaxed text-text-secondary">Jatuh cinta dengan Rice Bowl Ayam Cabe Garam mereka. Kopi lattenya juga creamy!</p>
-            <div class="mt-8 flex items-center gap-4">
-              <img src="img/testimonials/umi.png" alt="Umi" class="h-12 w-12 rounded-full object-cover">
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
               <div>
-                <p class="font-bold text-primary">Umi Marfa</p>
-                <p class="text-xs text-text-secondary">Blogger</p>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Suasana yang tenang dengan koleksi buku yang beragam. Pilihan terbaik di Purwokerto untuk bekerja atau menyiapkan tugasan (WFC) kerana terdapat banyak punca kuasa dan Wi-Fi yang stabil.</p>
               </div>
-            </div>
-          </article>
-          <!-- Clone items for seamless effect -->
-          <article class="inline-block w-[320px] shrink-0 whitespace-normal rounded-3xl bg-white p-8 shadow-xl border border-primary/5">
-            <p class="font-['Playfair_Display'] text-4xl text-accent mb-4">“</p>
-            <p class="text-sm leading-relaxed text-text-secondary">Tempatnya sangat cozy untuk menikmati kopi sambil membaca. Sangat disyorkan!</p>
-            <div class="mt-8 flex items-center gap-4">
-              <img src="img/testimonials/fitri.png" alt="Fitri" class="h-12 w-12 rounded-full object-cover">
               <div>
-                <p class="font-bold text-primary">Fitri Khairunnisa</p>
-                <p class="text-xs text-text-secondary">Mahasiswi</p>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/aditya.png" alt="Foto Aditya Pratama" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Aditya Pratama</p>
+                    <p class="text-[13px] text-text-secondary">Freelance Graphic Designer</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Jatuh cinta dengan Rice Bowl Ayam Cabe Garam mereka, benar-benar menjadi comfort food saya. Kopi lattenya juga creamy dan berkualiti. Tempat yang wajib dikunjungi berulang kali.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/umi.png" alt="Foto Umi Marfa" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Umi Marfa</p>
+                    <p class="text-[13px] text-text-secondary">Blogger</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Sangat menghargai adanya kawasan bebas rokok yang selesa di dalam. Kopinya enak, harganya berpatutan, dan kakitangannya sangat mesra serta ceria. Kualiti masa bersama rakan jadi lebih bermakna di sini.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/budi.png" alt="Foto Budi Santoso" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Budi Santoso</p>
+                    <p class="text-[13px] text-text-secondary">Karyawan Swasta</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Tempat kegemaran sejak zaman kuliah dulu. Selain suasananya yang estetik dan Instagrammable, menu Matcha Latte mereka adalah antara yang terbaik di bandar ini. Sentiasa membawa kenangan manis setiap kali singgah.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/rina.png" alt="Foto Rina Wijaya" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Rina Wijaya</p>
+                    <p class="text-[13px] text-text-secondary">Alumni Mahasiswi UNSOED</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <!-- Duplicated Marquee Content -->
+          <div aria-hidden="true" class="flex w-max min-w-full shrink-0 animate-marquee items-stretch gap-6 pr-6 group-hover:[animation-play-state:paused]">
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Tempatnya sangat cozy untuk menikmati kopi sambil membaca. Lokasinya strategis dan suasananya benar-benar membuat betah berlama-lama. Sangat disyorkan untuk pencinta kopi dan literasi!</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/fitri.png" alt="Foto Fitri Khairunnisa" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Fitri Khairunnisa</p>
+                    <p class="text-[13px] text-text-secondary">Mahasiswi / Content Creator</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Suasana yang tenang dengan koleksi buku yang beragam. Pilihan terbaik di Purwokerto untuk bekerja atau menyiapkan tugasan (WFC) kerana terdapat banyak punca kuasa dan Wi-Fi yang stabil.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/aditya.png" alt="Foto Aditya Pratama" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Aditya Pratama</p>
+                    <p class="text-[13px] text-text-secondary">Freelance Graphic Designer</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Jatuh cinta dengan Rice Bowl Ayam Cabe Garam mereka, benar-benar menjadi comfort food saya. Kopi lattenya juga creamy dan berkualiti. Tempat yang wajib dikunjungi berulang kali.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/umi.png" alt="Foto Umi Marfa" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Umi Marfa</p>
+                    <p class="text-[13px] text-text-secondary">Blogger / Penulis</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Sangat menghargai adanya kawasan bebas rokok yang selesa di dalam. Kopinya enak, harganya berpatutan, dan kakitangannya sangat mesra serta ceria. Kualiti masa bersama rakan jadi lebih bermakna di sini.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/budi.png" alt="Foto Budi Santoso" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Budi Santoso</p>
+                    <p class="text-[13px] text-text-secondary">Professional / Karyawan Swasta</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="flex w-[350px] shrink-0 flex-col justify-between rounded-2xl border border-secondary/15 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div>
+                <p class="font-['Playfair_Display'] text-5xl leading-none text-accent">“</p>
+                <p class="mt-4 text-balance text-base leading-[1.7] text-text-secondary">Tempat kegemaran sejak zaman kuliah dulu. Selain suasananya yang estetik dan Instagrammable, menu Matcha Latte mereka adalah antara yang terbaik di bandar ini. Sentiasa membawa kenangan manis setiap kali singgah.</p>
+              </div>
+              <div>
+                <p class="mt-5 text-accent">★★★★★</p>
+                <div class="mt-5 flex items-center gap-3"><img src="img/testimonials/rina.png" alt="Foto Rina Wijaya" class="h-12 w-12 rounded-full object-cover">
+                  <div>
+                    <p class="font-medium text-primary">Rina Wijaya</p>
+                    <p class="text-[13px] text-text-secondary">Alumni Mahasiswi UNSOED</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Location -->
-    <section id="location" class="bg-background py-16 md:py-24">
-      <div class="mx-auto grid max-w-7xl gap-12 px-6 md:grid-cols-2 md:px-8">
-        <div class="overflow-hidden rounded-3xl border border-primary/10 shadow-2xl">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.32!2d109.24!3d-7.40!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655efe9bb2be21%3A0x2861f38234b6c5cb!2sSinggah%20Coffee%20%26%20Book!5e0!3m2!1sen!2sid!4v1777020251192!5m2!1sen!2sid" class="w-full aspect-video border-0 grayscale hover:grayscale-0 transition-all duration-700" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-        <div class="flex flex-col justify-center">
-          <p class="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Find Us</p>
-          <h2 class="font-['Playfair_Display'] text-3xl font-bold text-primary md:text-5xl">Your Corner in Purwokerto</h2>
-          <p class="mt-6 text-text-secondary leading-relaxed">Jl. Riyanto No.29, Sumampir, Purwokerto Utara, Banyumas 53124</p>
-          <div class="mt-8 space-y-4">
-            <div class="flex justify-between border-b border-primary/10 pb-2">
-              <span class="font-bold text-primary">Everyday</span>
-              <span class="text-text-secondary">07:00 - 22:00</span>
-            </div>
+    <!-- Location & Hours -->
+    <section id="location" class="bg-background py-14 md:py-20">
+      <div class="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-2 md:items-start md:gap-12 md:px-8">
+        <div class="overflow-hidden rounded-2xl border border-secondary/20">
+          <div class="aspect-video">
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22688.23272243116!2d109.2474703!3d-7.406322!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e655efe9bb2be21%3A0x2861f38234b6c5cb!2sSinggah%20Coffee%20%26%20Book!5e1!3m2!1sen!2sid!4v1777020251192!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
-          <a href="https://maps.google.com/?q=Singgah+Coffee+%26+Book" class="mt-10 inline-flex items-center justify-center rounded-full bg-primary px-8 py-4 text-sm font-bold text-text-inverse hover:bg-secondary transition-colors">Get Directions</a>
         </div>
+        <div>
+          <p class="text-[13px] font-medium uppercase tracking-[0.2em] text-secondary">Location & Hours</p>
+          <h2
+            class="mt-4 text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-primary md:text-[40px]">
+            Find Your Corner in Purwokerto Utara</h2>
+          <p class="mt-5 text-base leading-[1.7] text-text-secondary">Jl. Riyanto No.29, Sumampir, Purwokerto Utara,
+            Banyumas 53124</p>
+          <div class="mt-6 overflow-hidden rounded-xl border border-secondary/20 bg-surface">
+            <table class="w-full text-left text-sm">
+              <tbody>
+                <tr class="border-b border-secondary/15">
+                  <th class="px-4 py-3 font-medium text-primary">Monday-Friday</th>
+                  <td class="px-4 py-3 text-text-secondary">07:00 - 22:00</td>
+                </tr>
+                <tr>
+                  <th class="px-4 py-3 font-medium text-primary">Saturday-Sunday</th>
+                  <td class="px-4 py-3 text-text-secondary">07:00 - 22:00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-6 text-base text-text-secondary">Phone: <a href="tel:+6285158083700"
+              class="cursor-pointer font-medium text-secondary transition-all duration-300 hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary">+62
+              851-5808-3700</a></p>
+          <a href="https://maps.google.com/?q=-7.4089,109.2442"
+            class="mt-6 inline-flex min-h-12 cursor-pointer items-center rounded-xl bg-primary px-8 py-3 text-sm font-bold text-text-inverse transition-all duration-300 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">Open
+            in Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta" class="bg-accent py-14 md:py-20">
+      <div class="mx-auto max-w-5xl px-6 text-center md:px-8">
+        <h2
+          class="text-balance font-['Playfair_Display'] text-[28px] leading-tight font-bold text-primary md:text-[40px]">
+          Your table is ready.</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-balance text-base leading-[1.7] text-primary/90">Rasakan hangatnya suasana
+          dan kekayaan rasa kopi Indonesia dalam setiap kunjungan Anda ke Singgah Coffee &amp; Book.</p>
+        <a href="https://wa.me/6285158083700"
+          class="mt-8 inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-bold text-text-inverse transition-all duration-300 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.58 5.95L0 24l6.31-1.65a11.75 11.75 0 0 0 5.76 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.44Zm-8.45 18.3h-.01a9.8 9.8 0 0 1-5-1.37l-.36-.22-3.75.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.43-9.88 9.88-9.88a9.81 9.81 0 0 1 6.99 2.9 9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.88-9.89 9.88Zm5.42-7.39c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15-.2.3-.76.97-.94 1.17-.17.2-.35.22-.65.08-.3-.15-1.28-.47-2.43-1.5-.9-.8-1.5-1.8-1.67-2.1-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.52-.08-.15-.66-1.6-.9-2.2-.24-.56-.48-.48-.66-.49h-.57c-.2 0-.52.08-.8.38-.27.3-1.03 1-.1 2.45.93 1.45 2.66 2.85 3.04 3.1.37.25 5.25 2.57 6.35 2.04 1.1-.53 1.83-1.74 2.03-2.34.2-.6.2-1.1.14-1.2-.05-.1-.24-.15-.53-.3Z" />
+          </svg>
+          Visit Us via WhatsApp
+        </a>
       </div>
     </section>
   </main>
 
-  <footer class="bg-primary text-text-inverse py-20">
-    <div class="mx-auto max-w-7xl px-6 md:px-8 grid gap-12 md:grid-cols-4">
-      <div class="col-span-2">
-        <p class="font-['Playfair_Display'] text-3xl font-bold text-accent mb-6">Singgah Coffee & Book</p>
-        <p class="text-text-inverse/60 max-w-sm">A sanctuary where great coffee meets great books. Your place to land in the heart of Purwokerto.</p>
+  <!-- Footer -->
+  <footer id="footer" class="border-t border-accent bg-primary py-12 text-text-inverse">
+    <div class="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-3 md:px-8">
+      <div>
+        <p class="font-['Playfair_Display'] text-2xl font-bold text-accent">Singgah Coffee &amp; Book</p>
+        <p class="mt-3 max-w-xs text-base leading-[1.7] text-text-inverse/80">Coffee · Books · Community</p>
       </div>
       <div>
-        <p class="font-bold text-accent uppercase tracking-widest text-xs mb-6">Explore</p>
-        <ul class="space-y-4 text-sm text-text-inverse/80">
-          <li><a href="#menu" class="hover:text-accent transition-colors">Our Menu</a></li>
-          <li><a href="#about" class="hover:text-accent transition-colors">About Us</a></li>
-          <li><a href="#gallery" class="hover:text-accent transition-colors">Gallery</a></li>
+        <p class="text-[13px] font-bold uppercase tracking-[0.2em] text-accent">Quick Links</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a href="#hero"
+              class="cursor-pointer transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Home</a>
+          </li>
+          <li><a href="#menu"
+              class="cursor-pointer transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Menu</a>
+          </li>
+          <li><a href="#gallery"
+              class="cursor-pointer transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Gallery</a>
+          </li>
+          <li><a href="#location"
+              class="cursor-pointer transition-all duration-300 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent">Location</a>
+          </li>
         </ul>
       </div>
       <div>
-        <p class="font-bold text-accent uppercase tracking-widest text-xs mb-6">Connect</p>
-        <div class="flex gap-4">
-          <a href="#" class="p-3 rounded-xl border border-white/10 hover:bg-accent hover:text-primary transition-all">Instagram</a>
-          <a href="#" class="p-3 rounded-xl border border-white/10 hover:bg-accent hover:text-primary transition-all">WhatsApp</a>
+        <p class="text-[13px] font-bold uppercase tracking-[0.2em] text-accent">Social Media</p>
+        <div class="mt-4 flex items-center gap-4">
+          <a href="https://instagram.com/singgahcoffeebookpwt"
+            class="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border border-accent/40 transition-all duration-300 hover:bg-accent hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            aria-label="Instagram">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8" />
+              <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
+            </svg>
+          </a>
+          <a href="https://www.tiktok.com/@singgahcoffeebookpwt?_r=1&_t=ZS-95pZuKfvMjE"
+            class="inline-flex h-12 w-12 cursor-pointer items-center justify-center rounded-xl border border-accent/40 transition-all duration-300 hover:bg-accent hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+            aria-label="TikTok">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M15.34 3h2.76a4.6 4.6 0 0 0 2.9 2.86v2.82a7.24 7.24 0 0 1-2.92-.7v6.6A5.58 5.58 0 1 1 12.5 9v2.95a2.68 2.68 0 1 0 2.84 2.67V3Z" />
+            </svg>
+          </a>
         </div>
+        <p class="mt-4 text-sm text-text-inverse/80">@singgahcoffeebookpwt</p>
       </div>
     </div>
-    <div class="mx-auto max-w-7xl px-6 md:px-8 mt-20 pt-8 border-t border-white/5 text-center text-xs text-text-inverse/40">
-      © 2026 Singgah Coffee & Book. All rights reserved.
+    <div
+      class="mx-auto mt-10 max-w-7xl border-t border-accent/40 px-6 pt-6 text-center text-[13px] text-text-inverse/75 md:px-8">
+      © 2026 Singgah Coffee &amp; Book — Purwokerto Utara, Indonesia
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ============================================== -->
+  <!-- JAVASCRIPT — ALL INTERACTIVITY                -->
+  <!-- ============================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // =========================================
+      // 1. NAVBAR SCROLL BEHAVIOR
+      // =========================================
+      function initNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+
+        const scrolledClass = 'navbar-scrolled';
+        const hiddenClass = 'navbar-hidden';
+        let lastY = window.scrollY;
+
+        // Inject the scrolled-state styles once
+        const style = document.createElement('style');
+        style.textContent = `
+        @keyframes float-shake {
+          0% { transform: scale(1) translateY(0); }
+          25% { transform: scale(0.98) translateY(2px) rotate(0.3deg); }
+          50% { transform: scale(1.005) translateY(-1px) rotate(-0.3deg); }
+          75% { transform: scale(0.99) translateY(1px) rotate(0.1deg); }
+          100% { transform: scale(1) translateY(0) rotate(0); }
+        }
+        .navbar-scrolled {
+          top: 16px !important;
+          left: 0 !important;
+          right: 0 !important;
+          width: calc(100% - 32px) !important;
+          max-width: 80rem !important; /* max-w-7xl */
+          margin-left: auto !important;
+          margin-right: auto !important;
+          border-radius: 1rem !important; /* rounded-2xl */
+          background-color: rgba(44, 24, 16, 0.95) !important;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.28) !important;
+          border: 1px solid rgba(212, 168, 83, 0.45) !important;
+          backdrop-filter: blur(12px) !important;
+          animation: float-shake 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+        }
+        .navbar-scrolled > div {
+          padding-top: 0.75rem !important;
+          padding-bottom: 0.75rem !important;
+        }
+        .navbar-hidden {
+          transform: translateY(-140%);
+        }
+      `;
+        document.head.appendChild(style);
+
+        window.addEventListener('scroll', () => {
+          const currentY = window.scrollY;
+          if (currentY > 60) {
+            navbar.classList.add(scrolledClass);
+          } else {
+            navbar.classList.remove(scrolledClass);
+          }
+          if (currentY > lastY && currentY > 180) {
+            navbar.classList.add(hiddenClass);
+          } else {
+            navbar.classList.remove(hiddenClass);
+          }
+          lastY = currentY;
+        }, { passive: true });
+      }
+
+
+      // =========================================
+      // 2. MOBILE HAMBURGER MENU
+      // =========================================
+      function initHamburgerMenu() {
+        const hamburgerBtn = document.getElementById('mobile-menu-button');
+        if (!hamburgerBtn) return;
+
+        // Build mobile menu (it doesn't exist in the static HTML)
+        const mobileMenu = document.createElement('div');
+        mobileMenu.id = 'mobile-menu';
+        mobileMenu.className = 'pointer-events-none fixed inset-0 z-[60] hidden';
+        mobileMenu.innerHTML = `
+        <div class="fixed inset-0 z-40 bg-black/40 opacity-0 transition-opacity duration-300" data-overlay></div>
+        <div class="fixed top-0 right-0 z-50 flex h-full w-72 translate-x-full flex-col bg-background px-6 py-8 shadow-2xl transition-transform duration-300" data-panel>
+          <button class="mb-8 self-end rounded-lg p-2 text-primary transition-colors duration-200 hover:bg-primary/10" aria-label="Close menu" data-close>
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+          <nav class="flex flex-col gap-6">
+            <a href="#menu" class="cursor-pointer rounded-lg px-2 py-1 text-base font-medium text-text-primary transition-colors duration-200 hover:bg-primary/10 hover:text-accent">Menu</a>
+            <a href="#about" class="cursor-pointer rounded-lg px-2 py-1 text-base font-medium text-text-primary transition-colors duration-200 hover:bg-primary/10 hover:text-accent">About</a>
+            <a href="#gallery" class="cursor-pointer rounded-lg px-2 py-1 text-base font-medium text-text-primary transition-colors duration-200 hover:bg-primary/10 hover:text-accent">Gallery</a>
+            <a href="#location" class="cursor-pointer rounded-lg px-2 py-1 text-base font-medium text-text-primary transition-colors duration-200 hover:bg-primary/10 hover:text-accent">Location</a>
+          </nav>
+          <a href="https://wa.me/6285158083700" class="mt-auto inline-flex min-h-12 items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-bold text-primary transition-colors duration-200 hover:bg-[#e7bd71]">Visit Us via WhatsApp</a>
+        </div>
+      `;
+        document.body.appendChild(mobileMenu);
+
+        const panel = mobileMenu.querySelector('[data-panel]');
+        const overlay = mobileMenu.querySelector('[data-overlay]');
+        let isClosing = false;
+
+        const openMenu = () => {
+          if (!panel || !overlay) return;
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.classList.add('pointer-events-auto');
+          mobileMenu.classList.remove('pointer-events-none');
+          document.body.style.overflow = 'hidden';
+          hamburgerBtn.setAttribute('aria-expanded', 'true');
+          hamburgerBtn.style.transform = 'rotate(90deg)';
+          requestAnimationFrame(() => {
+            panel.classList.remove('translate-x-full');
+            overlay.classList.remove('opacity-0');
+          });
+        };
+
+        const closeMenu = () => {
+          if (!panel || !overlay || isClosing || mobileMenu.classList.contains('hidden')) return;
+          isClosing = true;
+          panel.classList.add('translate-x-full');
+          overlay.classList.add('opacity-0');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+          hamburgerBtn.style.transform = '';
+          setTimeout(() => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('pointer-events-auto');
+            mobileMenu.classList.add('pointer-events-none');
+            document.body.style.overflow = '';
+            isClosing = false;
+          }, 300);
+        };
+
+        hamburgerBtn.addEventListener('click', openMenu);
+        mobileMenu.querySelector('[data-overlay]').addEventListener('click', closeMenu);
+        mobileMenu.querySelector('[data-close]').addEventListener('click', closeMenu);
+
+        // Close on nav link click
+        mobileMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on resize to desktop
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768) closeMenu();
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') closeMenu();
+        });
+      }
+
+
+      // =========================================
+      // 3. SMOOTH SCROLL NAVIGATION
+      // =========================================
+      function initSmoothScroll() {
+        const OFFSET = 80;
+
+        document.addEventListener('click', (e) => {
+          const anchor = e.target.closest('a[href^="#"]');
+          if (!anchor) return;
+          const id = anchor.getAttribute('href');
+          if (!id || id === '#') return;
+          const target = document.querySelector(id);
+          if (!target) return;
+
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - OFFSET;
+          window.scrollTo({ top, behavior: 'smooth' });
+
+          // Close mobile menu if open
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+          }
+        });
+      }
+
+
+      // =========================================
+      // 4. MENU FILTER TABS
+      // =========================================
+      function initMenuFilter() {
+        const filtersContainer = document.getElementById('menu-filters');
+        if (!filtersContainer) return;
+
+        const buttons = filtersContainer.querySelectorAll('button');
+        const cards = document.querySelectorAll('[data-category]');
+
+        // Active/inactive styles using CSS vars
+        const ACTIVE = { bg: 'var(--color-primary)', color: 'var(--color-text-inverse)' };
+        const INACTIVE = { bg: 'var(--color-background)', color: 'var(--color-secondary)' };
+
+        const setActive = (activeBtn) => {
+          buttons.forEach(b => {
+            b.style.backgroundColor = INACTIVE.bg;
+            b.style.color = INACTIVE.color;
+          });
+          activeBtn.style.backgroundColor = ACTIVE.bg;
+          activeBtn.style.color = ACTIVE.color;
+        };
+
+        const filterCards = (category) => {
+          cards.forEach(card => {
+            const match = category === 'all' || card.dataset.category === category;
+            card.style.transition = 'opacity 300ms ease';
+            if (match) {
+              card.style.opacity = '0';
+              card.style.display = '';
+              // Force reflow then fade in
+              requestAnimationFrame(() => {
+                requestAnimationFrame(() => { card.style.opacity = '1'; });
+              });
+            } else {
+              card.style.opacity = '0';
+              setTimeout(() => { card.style.display = 'none'; }, 300);
+            }
+          });
+        };
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const label = btn.textContent.trim().toLowerCase();
+            setActive(btn);
+            filterCards(label);
+          });
+        });
+      }
+
+
+      // =========================================
+      // 5. GALLERY LIGHTBOX
+      // =========================================
+      function initGalleryLightbox() {
+        const gallerySection = document.getElementById('gallery');
+        if (!gallerySection) return;
+
+        // All clickable gallery images (anchor > img)
+        const galleryLinks = Array.from(gallerySection.querySelectorAll('a[href="#"]'));
+        const images = galleryLinks.map(link => {
+          const img = link.querySelector('img');
+          return { src: img?.src || '', alt: img?.alt || '' };
+        });
+        if (!images.length) return;
+
+        let currentIndex = 0;
+        let overlay = null;
+        let imgEl = null;
+
+        const buildLightbox = () => {
+          overlay = document.createElement('div');
+          overlay.style.cssText = `
+          position:fixed;inset:0;z-index:9999;
+          display:flex;align-items:center;justify-content:center;
+          background:rgba(0,0,0,0.9);
+          opacity:0;transition:opacity 300ms ease;cursor:pointer;
+        `;
+
+          // Close button
+          const closeBtn = document.createElement('button');
+          closeBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" style="width:28px;height:28px"><path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
+          closeBtn.setAttribute('aria-label', 'Close lightbox');
+          closeBtn.style.cssText = `position:absolute;top:20px;right:24px;background:none;border:none;color:#FAF7F2;cursor:pointer;z-index:2;transition:color 200ms;`;
+          closeBtn.addEventListener('mouseenter', () => closeBtn.style.color = 'var(--color-accent)');
+          closeBtn.addEventListener('mouseleave', () => closeBtn.style.color = '#FAF7F2');
+          closeBtn.addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+
+          // Prev button
+          const prevBtn = document.createElement('button');
+          prevBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" style="width:32px;height:32px"><path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          prevBtn.setAttribute('aria-label', 'Previous image');
+          prevBtn.style.cssText = `position:absolute;left:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:#FAF7F2;cursor:pointer;z-index:2;transition:color 200ms;`;
+          prevBtn.addEventListener('mouseenter', () => prevBtn.style.color = 'var(--color-accent)');
+          prevBtn.addEventListener('mouseleave', () => prevBtn.style.color = '#FAF7F2');
+          prevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigate(-1); });
+
+          // Next button
+          const nextBtn = document.createElement('button');
+          nextBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" style="width:32px;height:32px"><path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+          nextBtn.setAttribute('aria-label', 'Next image');
+          nextBtn.style.cssText = `position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:#FAF7F2;cursor:pointer;z-index:2;transition:color 200ms;`;
+          nextBtn.addEventListener('mouseenter', () => nextBtn.style.color = 'var(--color-accent)');
+          nextBtn.addEventListener('mouseleave', () => nextBtn.style.color = '#FAF7F2');
+          nextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigate(1); });
+
+          // Counter
+          const counter = document.createElement('span');
+          counter.style.cssText = `position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:#FAF7F2;font-size:13px;letter-spacing:0.1em;opacity:0.7;`;
+          overlay._counter = counter;
+
+          // Image
+          imgEl = document.createElement('img');
+          imgEl.style.cssText = `max-height:85vh;max-width:90vw;object-fit:contain;cursor:default;border-radius:4px;transition:opacity 250ms ease;`;
+
+          overlay.append(closeBtn, prevBtn, nextBtn, imgEl, counter);
+          document.body.appendChild(overlay);
+
+          overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) closeLightbox();
+          });
+        };
+
+        const showImage = (index) => {
+          currentIndex = (index + images.length) % images.length;
+          imgEl.style.opacity = '0';
+          setTimeout(() => {
+            imgEl.src = images[currentIndex].src;
+            imgEl.alt = images[currentIndex].alt;
+            imgEl.style.opacity = '1';
+            overlay._counter.textContent = `${currentIndex + 1} / ${images.length}`;
+          }, 150);
+        };
+
+        const navigate = (dir) => showImage(currentIndex + dir);
+
+        const openLightbox = (index) => {
+          if (!overlay) buildLightbox();
+          document.body.style.overflow = 'hidden';
+          overlay.style.display = 'flex';
+          requestAnimationFrame(() => { overlay.style.opacity = '1'; });
+          showImage(index);
+        };
+
+        const closeLightbox = () => {
+          if (!overlay) return;
+          overlay.style.opacity = '0';
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            document.body.style.overflow = '';
+          }, 300);
+        };
+
+        // Bind clicks
+        galleryLinks.forEach((link, i) => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLightbox(i);
+          });
+        });
+
+        // Keyboard
+        document.addEventListener('keydown', (e) => {
+          if (!overlay || overlay.style.display === 'none') return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') navigate(-1);
+          if (e.key === 'ArrowRight') navigate(1);
+        });
+      }
+
+
+      // =========================================
+      // 6. SCROLL REVEAL ANIMATION
+      // =========================================
+      function initScrollReveal() {
+        // Target all main containers for a smooth global fade-in
+        const revealTargets = document.querySelectorAll('section > div, footer > div, .navbar');
+        if (!revealTargets.length) return;
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target;
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+              obs.unobserve(el);
+            }
+          });
+        }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+        revealTargets.forEach((el) => {
+          // Initialize transparent and slightly lower
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1)';
+
+          // Short delay to ensure browser layout completes
+          setTimeout(() => observer.observe(el), 100);
+        });
+      }
+
+
+      // =========================================
+      // 7. COUNTER ANIMATION
+      // =========================================
+      function initCounters() {
+        const counters = document.querySelectorAll('[data-counter-target]');
+        if (!counters.length) return;
+
+        const animateCounter = (el) => {
+          const target = parseFloat(el.getAttribute('data-counter-target') || '0');
+          const decimals = parseInt(el.getAttribute('data-counter-decimals') || '0', 10);
+          const suffix = el.getAttribute('data-counter-suffix') || '';
+          const prefix = el.getAttribute('data-counter-prefix') || '';
+          const noGrouping = el.getAttribute('data-counter-no-grouping') === 'true';
+          const duration = 2500; // 2.5s duration for a smooth experience
+          const startTime = performance.now();
+
+          const formatValue = (val) => {
+            let numberStr;
+            if (decimals > 0) {
+              numberStr = val.toFixed(decimals);
+            } else if (noGrouping) {
+              numberStr = Math.round(val).toString();
+            } else {
+              // Check if prefix corresponds to Indonesian Rupiah to apply id-ID formatting
+              numberStr = Math.round(val).toLocaleString(prefix === 'Rp' ? 'id-ID' : 'en-US');
+            }
+            return `${prefix}${numberStr}${suffix}`;
+          };
+
+          const frame = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            // Ease-out cubic curve
+            const eased = 1 - Math.pow(1 - progress, 3);
+
+            el.innerText = formatValue(target * eased);
+
+            if (progress < 1) {
+              requestAnimationFrame(frame);
+            } else {
+              el.innerText = formatValue(target); // Force exact final value
+            }
+          };
+
+          requestAnimationFrame(frame);
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            // Check intersection with slightly expanded bounds to trigger early
+            if (entry.isIntersecting) {
+              // Trigger with a delay to synchronize with container fade-in
+              setTimeout(() => {
+                animateCounter(entry.target);
+              }, 400);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0 }); // Trigger as soon as 1px is visible
+
+        counters.forEach((counter) => {
+          // Initialize to 0 so it doesn't pop in final state before animating
+          const suffix = counter.getAttribute('data-counter-suffix') || '';
+          const prefix = counter.getAttribute('data-counter-prefix') || '';
+          const decimals = parseInt(counter.getAttribute('data-counter-decimals') || '0', 10);
+          let initVal = decimals > 0 ? "0.0" : "0";
+          counter.innerText = `${prefix}${initVal}${suffix}`;
+
+          observer.observe(counter);
+        });
+      }
+
+
+      // =========================================
+      // 8. ACTIVE NAV LINK HIGHLIGHT
+      // =========================================
+      function initActiveNavHighlight() {
+        const navLinks = document.querySelectorAll('#navbar ul a[href^="#"]');
+        const sectionIds = Array.from(navLinks).map(a => a.getAttribute('href').slice(1));
+        const sectionEls = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+        const clearActive = () => {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            link.style.textDecoration = '';
+          });
+        };
+
+        const setActiveLink = (id) => {
+          clearActive();
+          navLinks.forEach(link => {
+            if (link.getAttribute('href') === `#${id}`) {
+              link.style.color = 'var(--color-accent)';
+              link.style.textDecoration = 'underline';
+              link.style.textUnderlineOffset = '6px';
+              link.style.textDecorationThickness = '2px';
+            }
+          });
+        };
+
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActiveLink(entry.target.id);
+            }
+          });
+        }, { rootMargin: '-80px 0px -50% 0px', threshold: 0 });
+
+        sectionEls.forEach(el => navObserver.observe(el));
+      }
+
+
+      // =========================================
+      // 9. WHATSAPP FLOATING BUTTON + PULSE
+      // =========================================
+      function initWhatsAppButton() {
+        // Inject pulse keyframes & button styles
+        const pulseStyle = document.createElement('style');
+        pulseStyle.textContent = `
+        @keyframes wa-pulse {
+          0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+          70%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+          100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+        }
+        #wa-float-btn {
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          z-index: 50;
+          width: 56px;
+          height: 56px;
+          border-radius: 50%;
+          background: #25D366;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+          cursor: pointer;
+          text-decoration: none;
+          opacity: 0;
+          transform: translateY(20px) scale(0.8);
+          transition: opacity 400ms ease, transform 400ms ease, background 200ms;
+          pointer-events: none;
+          animation: wa-pulse 2s infinite;
+        }
+        #wa-float-btn.visible {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+          pointer-events: auto;
+        }
+        #wa-float-btn:hover {
+          background: #1ebe57;
+          transform: translateY(0) scale(1.08);
+        }
+      `;
+        document.head.appendChild(pulseStyle);
+
+        // Create button element
+        const waBtn = document.createElement('a');
+        waBtn.id = 'wa-float-btn';
+        waBtn.href = 'https://wa.me/6285158083700';
+        waBtn.target = '_blank';
+        waBtn.rel = 'noopener noreferrer';
+        waBtn.setAttribute('aria-label', 'Chat on WhatsApp');
+        waBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>`;
+        document.body.appendChild(waBtn);
+
+        // Show only after scrolling past hero
+        const hero = document.getElementById('hero');
+        if (!hero) return;
+
+        window.addEventListener('scroll', () => {
+          const heroBottom = hero.offsetTop + hero.offsetHeight;
+          waBtn.classList.toggle('visible', window.scrollY > heroBottom);
+        }, { passive: true });
+      }
+
+
+      // =========================================
+      // INIT ALL FEATURES
+      // =========================================
+      initNavbarScroll();
+      initHamburgerMenu();
+      initSmoothScroll();
+      initMenuFilter();
+      initGalleryLightbox();
+      initScrollReveal();
+      initCounters();
+      initActiveNavHighlight();
+      // initWhatsAppButton();
+
+    });
+  </script>
+
 </body>
+
 </html>
